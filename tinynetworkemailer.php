@@ -10,6 +10,7 @@ class TinyNetworkEmailer
 
     public static function createOptionPage()
     {
+        $user_roles = wp_roles()->get_names();
         require_once(TNE_PLUGIN_DIR . 'tne-options-page.php');
     }
 
