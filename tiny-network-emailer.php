@@ -22,3 +22,4 @@ define('TNE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 require_once TNE_PLUGIN_DIR . 'tinynetworkemailer.php';
 
 add_action('admin_menu', 'TinyNetworkEmailer::registerMenuHooks');
+add_action('wp_ajax_tne_send_email', 'TinyNetworkEmailer::ajaxSendEmails');

@@ -1,18 +1,45 @@
+<script>
+jQuery(document).on('ready', function(){
+    console.log("Test");
+
+    // Hook form submission.
+    jQuery('#tne-form').on('submit', function(evt){
+        evt.preventDefault();
+        jQuery.ajax({
+            type: "POST",
+            url: ajaxurl,
+            data: {
+                "action": "tne_send_email",
+                "form_data": jQuery('#tne-form').serialize()
+            },
+            success: function(response){
+                console.log(response);
+            }
+        });
+    })
+
+})
+
+</script>
+
 <div>
     <div>
-        <h2>Recipients</h2>
-        <?php 
-            if(!is_null($user_roles)){
-                foreach($user_roles as $role){
-                    
+        <form id="tne-form" method="post">
+            <h2>Recipients</h2>
+            <?php 
+                if(!is_null($user_roles)){
+                    foreach($user_roles as $name){
+            ?>
+                <label for="<?php echo $name;?>"><?php echo $name;?></label>
+                <input id="<?php echo $name;?>" name="roles[]" type="checkbox" value="<?php echo $name; ?>">
+            <?php
+                    }
                 }
-            }
 
-        ?>
-    </div>
-    <div>
-        <h2>Send Email</h2>
-        <form method="post">
+            ?>
+        </div>
+        <div>
+            <h2>Send Email</h2>
             <span>
                 <label for="tne-from">From</label>
                 <input type="email" name="tne-from" id="tne-from">
