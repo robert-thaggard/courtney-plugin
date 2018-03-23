@@ -14,10 +14,11 @@
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
-    die("Access Denied. Sucka.");
+    die("Access Denied.");
 }
 
 define('TNE_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('TNE_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once TNE_PLUGIN_DIR . 'tinynetworkemailer.php';
 
