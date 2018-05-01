@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function(){
         xhr.onreadystatechange = function(){
             if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
-                console.log(response);
                 done_button.style.display = 'block';
                 done_button.disabled = false;
             }
@@ -123,20 +122,16 @@ if (!is_null($user_roles)) {
         <table>
             <thead>
                 <tr>
-                    <td>Send Date</td>
+                    <td>Sent</td>
+                    <td>From</td>
                     <td>Subject</td>
                     <td>Actions</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>December 1st, 2017</td>
-                    <td>11:11am</td>
-                    <td>
-                        <button>View</button>
-                        <button>Delete</button>
-                    </td>
-                </tr>
+            <?php
+               echo TinyNetworkEmailer::buildHistoryTableData();
+            ?>
             </tbody>
         </table>
     </div>
